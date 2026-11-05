@@ -1,0 +1,11 @@
+[Unit]
+Description=Night Shift dispatcher
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt
+Environment=PYTHONPATH=/opt
+Environment=NIGHTSHIFT_ROOT=/var/lib/night-shift
+Environment=NIGHTSHIFT_ENV=/var/lib/night-shift/secrets/night-shift.env
+ExecStart=/usr/bin/python3 -m nightshift.remote dispatch
